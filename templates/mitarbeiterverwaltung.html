@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mitarbeiter verwaltung</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <h1 style =color:green>Mitarbeiter Übersicht!</h1>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    <table id='foobar-table' class="table">
+  <thead>
+  <br>
+
+
+
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Titel</th>
+      <th scope="col">Vorname</th>
+      <th scope='col'>NAchname</th>
+      <th scope='col'>Geburts Datum</th>
+      <th scope="col">Eintritt</th>
+      <th scope='col'>Austritt</th>
+      <th datatype="string" title="Nach Geschlecht sortieren" scope="col">Geschlecht</th>
+      <th scope="col">Dienstnummer</th>
+      <th scope='col'>PrivatNummer</th>
+      <th scope='col'>Gehalt</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+  {% for mita in mitarbeiter %}
+  <form>
+  <tr>
+
+    <th scope="id">{{ mita[0] }}</th>
+    <td>
+      <label>
+        <input value="{{ mita[2] }}">
+      </label>
+    </td>
+    <td>
+      <label>
+        <input value="{{ mita[3] }}">
+      </label>
+    </td>
+    <td>
+      <label>
+        <input value="{{ mita[4] }}">
+      </label>
+    </td>
+    <td>
+      <label>
+        <input value="{{ mita[5] }}">
+      </label>
+    </td>
+    <td>
+      <label>
+        <input value="{{ mita[7] }}">
+      </label>
+    </td>
+    <td>
+      <label>
+        <input value="{{ mita[8] }}">
+      </label>
+    </td>
+    <td>
+      <label>
+        <input value="{{ mita[19] }}">
+      </label>
+    </td>
+    <td>
+      <label>
+        <input value="{{ mita[12] }}">
+      </label>
+    </td>
+    <td>
+      <label>
+        <input value="{{ mita[11] }}">
+      </label>
+    </td>
+    <td>
+      <label>
+        <input value="{{ mita[10] }}">
+      </label>
+    </td>
+  </tr>
+    </form>
+  {% endfor %}
+
+  </tbody>
+</table>
+
+  </body>
+</html>

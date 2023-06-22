@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MitarbeiterÜbersicht</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <!--Script zum sortieren von Spalte Geschlechter-->
+    <script>
+      let sortAscending = true;
+      function sortTableByGender() {
+        const table = document.getElementById('foobar-table');
+        const rows = Array.from(table.getElementsByTagName('tr'));
+        rows.shift(); // Remove table header row
+        const sortedRows = rows.sort((a, b) => {
+          const genderA = a.cells[7].textContent;
+          const genderB = b.cells[7].textContent;
+          return genderA.localeCompare(genderB);
+        });
+        if (!sortAscending) {
+          sortedRows.reverse();
+        }
+        while (table.rows.length > 1) {
+          table.deleteRow(1);
+        }
+        sortedRows.forEach((row) => {
+          table.appendChild(row);
+        });
+        sortAscending = !sortAscending;
+      }
+    </script>
+
+  </head>
+  <body>
+    <h1 style =color:green>Mitarbeiter Übersicht!</h1>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    <table id='foobar-table' class="table">
+  <thead>
+  <br>
+
+  <form method="POST" >
+
+    <div >
+      <label>
+        Suche nach Eintritt:
+        <input type="date" name="eintritt">
+      </label>
+      und/oder
+      <label>
+        Suche nach Austritt:
+        <input type="date" name="austritt">
+      </label>
+      <button type="submit" >suchen</button>
+    </div>
+  </form>
+  <br>
+
+
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Titel</th>
+      <th scope="col">Vorname</th>
+      <th scope='col'>NAchname</th>
+      <th scope='col'>Geburts Datum</th>
+      <th scope="col">Eintritt</th>
+      <th scope='col'>Austritt</th>
+      <th datatype="string" title="Nach Geschlecht sortieren" scope="col">
+            Geschlecht
+            <button onclick="sortTableByGender()">auf/ab</button>
+          </th>
+      <th scope="col">Dienstnummer</th>
+      <th scope='col'>PrivatNummer</th>
+      <th scope='col'>Gehalt</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+  {% for mita in mitarbeiter %}
+  <tr>
+    <th scope="id">{{ mita[0] }}</th>
+    <td>{{ mita[2] }}</td>
+    <td>{{ mita[3] }}</td>
+    <td>{{ mita[4] }}</td>
+    <td>{{ mita[5] }}</td>
+    <td>{{ mita[7] }}</td>
+    <td>{{ mita[8] }}</td>
+    <td>{{ mita[19] }}</td>
+    <td>{{ mita[12] }}</td>
+    <td>{{ mita[11] }}</td>
+    <td>{{ mita[10] }}</td>
+  </tr>
+  {% endfor %}
+
+
+
+  </tbody>
+</table>
+
+  </body>
+</html>
